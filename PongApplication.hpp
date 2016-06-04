@@ -1,14 +1,17 @@
-#ifndef _PONGAPPLICATION_HPP
-#define _PONGAPPLICATION_HPP
+#ifndef PONGAPPLICATION_HPP
+#define PONGAPPLICATION_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Core/CRconstants.hpp"
+#include <iostream>
+#include "CRconstants.hpp"
+#include "States.hpp"
 
 // The namespace bounding the pong application code dependencies
 // crp => Code Red Pong
 namespace crp
 {
 	class Application{
+
 	private:
 
 		/* Application constants */
@@ -20,13 +23,13 @@ namespace crp
 		// Application FPS
 		const int FPS_ = 60;
 
-		/* Application variables and objects */
-
-		// Flag to determine if the application is running, duh!
-		bool application_running_;
+		StateManager stateManager_;
 
 		// The exit code that shall be returned after the applicated is finished
 		int application_exit_code_;
+
+		// Flag to determine if the application is running, duh!
+		bool application_running_;
 
 		// SFML Window object that will be rendered to
 		sf::RenderWindow * window_;
@@ -38,26 +41,22 @@ namespace crp
 
 		void gameLoop();
 
-		void process_events();
-
-		void process_logic();
-
-		void render();
-
 		void init();
 
 		void cleanup();
 
 	public:
-
+		
 		Application();
 		virtual ~Application();
 
 		// Begins main application logic
 		int run();
 
-		// Is the application running?
-		const bool isRunning() const;
+		sf::RenderWindow * getWindow() const;
+
+		//friend class GameState;
+		//friend class SplashState;
 	};
 }
 #endif

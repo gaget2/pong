@@ -5,7 +5,7 @@
 
 /* Local includes */
 #include "PongApplication.hpp"
-#include "Core/CRconstants.hpp"
+#include "CRconstants.hpp"
 
 int main(int argc, char** argv){
 
@@ -14,7 +14,7 @@ int main(int argc, char** argv){
 
 	// Create instance of pong application
 	crp::Application * pongGame = new(std::nothrow) crp::Application();
-	assert(NULL != pongGame && "main() Can't create Application");
+	assert(NULL != pongGame && "main() can't create Application");
 
 	// Run application
 	exitCode = pongGame->run();
