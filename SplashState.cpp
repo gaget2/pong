@@ -5,14 +5,15 @@
 
 namespace crp
 {
-	SplashState::SplashState( std::string stateName, sf::RenderWindow * theWindow ) :
+	SplashState::SplashState( std::string stateName, sf::RenderWindow & theWindow ) :
 		crp::GameState(stateName, theWindow),
 		frameCount_(0)
 	{
 	}
 
 	SplashState::~SplashState(){
-		cleanup();
+		std::cout << "Begin SplashState::~SplashState()" << std::endl;
+		//cleanup();
 	}
 
 	void SplashState::init(){
@@ -65,13 +66,14 @@ namespace crp
 	}
 
 	void SplashState::render(){
-		window_->clear(sf::Color::Black);
+		window_.clear(sf::Color::Black);
 		logoSprite_->setColor(color_);
-		window_->draw(*logoSprite_);
-		window_->display();
+		window_.draw(*logoSprite_);
+		window_.display();
 	}
 
 	void SplashState::cleanup(){
+		std::cout << "Begin SplashState::cleanup()" << std::endl;
 		delete splashLogo_;
 		delete logoSprite_;
 		splashLogo_ = NULL;

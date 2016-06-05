@@ -40,8 +40,10 @@ namespace crp
 			// cleanup state if needed
 			if( state.isDeinit() )
 				stateManager_.removeActiveState();
-			if( state.isPaused() )
+			else if( state.isPaused() )
 				stateManager_.deactivateActiveState();
+
+			window_->setFramerateLimit(60);
 		}
 	}
 
@@ -55,7 +57,7 @@ namespace crp
 
 		std::cout << "Application::init() - creating initial splash state" << std::endl;
 		// Create initial splash state
-		SplashState * initState = new SplashState("SplashState", window_);
+		SplashState * initState = new SplashState("SplashState", *window_);
 
 		// Add this initial state
 		stateManager_.addActiveState(initState);

@@ -16,7 +16,7 @@ namespace crp
 		const std::string stateName_;
 		// The pointer to the application
 		//Application * theApp_;
-		sf::RenderWindow * window_;
+		sf::RenderWindow & window_;
 
 		bool initialized_;
 		
@@ -28,7 +28,7 @@ namespace crp
 
 	public:
 
-		GameState( std::string stateName, sf::RenderWindow * theWindow );
+		GameState( std::string stateName, sf::RenderWindow & theWindow );
 
 		virtual ~GameState();
 
@@ -75,7 +75,7 @@ namespace crp
 		int frameCount_;
 
 	public:
-		SplashState( std::string stateName, sf::RenderWindow * theWindow );
+		SplashState( std::string stateName, sf::RenderWindow & theWindow );
 
 		virtual ~SplashState();
 

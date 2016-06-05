@@ -5,7 +5,7 @@
 
 namespace crp
 {
-	GameState::GameState( std::string stateName, sf::RenderWindow * theWindow ) : 
+	GameState::GameState( std::string stateName, sf::RenderWindow & theWindow ) : 
 		stateName_(stateName),
 		window_(theWindow),
 		initialized_(false),
@@ -14,7 +14,7 @@ namespace crp
 		deinit_(false)
 
 	{
-
+		//
 	}
 
 	GameState::~GameState(){
@@ -43,8 +43,8 @@ namespace crp
 	}
 
 	void GameState::cleanup(){
-		delete window_;
-		window_ = NULL;
+		//delete window_;
+		//window_ = NULL;
 	}
 
 	const bool GameState::isPaused() const{

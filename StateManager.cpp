@@ -8,54 +8,69 @@ namespace crp
 	StateManager::StateManager()
 	{}
 	StateManager::~StateManager(){
+		std::cout << "Begin StateManager::~StateManager()"<< std::endl;
 		// Drop all active states
 	    while(not stateStack.empty())
 	    {
-	      // Retrieve the currently active state
-	      GameState* state = stateStack.back();
-	 
-	      // Pop the currently active state off the stack
-	      stateStack.pop_back();
+	    	std::cout << "StateManager::~StateManager() - GameState* state = stateStack.back(); " << std::endl;
+			// Retrieve the currently active state
+			GameState* state = stateStack.back();
 
-	      // Pause the currently active state
-	      state->pause();
+			std::cout << "StateManager::~StateManager() - stateStack.pop_back();" << std::endl;
+			// Pop the currently active state off the stack
+			stateStack.pop_back();
 
-	      // De-initialize the state
-	      state->deinit();
+			std::cout << "StateManager::~StateManager() - state->pause();" << std::endl;
+			// Pause the currently active state
+			state->pause();
 
-	      // Handle the cleanup before we pop it off the stack
-	      state->cleanup();
+			std::cout << "StateManager::~StateManager() - state->deinit();" << std::endl;
+			// De-initialize the state
+			state->deinit();
 
-	      // Just delete the state now
-	      delete aState;
+			std::cout << "StateManager::~StateManager() - state->cleanup();" << std::endl;
+			// Handle the cleanup before we pop it off the stack
+			state->cleanup();
 
-	      // Don't keep pointers around we don't need
-	      aState = NULL;
+			std::cout << "StateManager::~StateManager() - delete state;" << std::endl;
+			// Just delete the state now
+			delete state;
+
+			std::cout << "StateManager::~StateManager() - state = NULL;" << std::endl;
+			// Don't keep pointers around we don't need
+			state = NULL;
 	    }
 
 	    // Delete all our dropped states
 	    while(not deadStateStack.empty())
 	    {
-	      // Retrieve the currently active state
-	      GameState* state = deadStateStack.back();
+	    	std::cout << "StateManager::~StateManager() - GameState* state = deadStateStack.back();" << std::endl;
+			// Retrieve the currently active state
+			GameState* state = deadStateStack.back();
 
-	      // Pop the currently active state off the stack
-	      deadStateStack.pop_back();
+			std::cout << "StateManager::~StateManager() - deadStateStack.pop_back();" << std::endl;
+			// Pop the currently active state off the stack
+			deadStateStack.pop_back();
 
-	      // Pause the currently active state
-	      state->Pause();
+			std::cout << "StateManager::~StateManager() - state->pause();" << std::endl;
+			// Pause the currently active state
+			state->pause();
 
-	      // De-initialize the state
-	      state->DeInit();
+			std::cout << "StateManager::~StateManager() - state->deinit();" << std::endl;
+			// De-initialize the state
+			state->deinit();
 
-	      // Handle the cleanup before we pop it off the stack
-	      state->Cleanup();
+			std::cout << "StateManager::~StateManager() - state->cleanup();" << std::endl;
+			// Handle the cleanup before we pop it off the stack
+			state->cleanup();
 
-	      // Just delete the state now
-	      delete state;
+			std::cout << "StateManager::~StateManager() - delete state;" << std::endl;
+			// Just delete the state now
+			delete state;
 
-	      // Don't keep pointers around we don't need
-	      state = NULL;
+			std::cout << "StateManager::~StateManager() - state = NULL;" << std::endl;
+			// Don't keep pointers around we don't need
+			state = NULL;
 	    }
 	}
 
@@ -75,6 +90,7 @@ namespace crp
 	}
 
 	void StateManager::deactivateActiveState(){
+		std::cout << "Begin StateManager::deactivateActiveState()"<< std::endl;
 		if( not stateStack.empty() ){
 			// Get the current active state
 			GameState * state = stateStack.back();
@@ -93,6 +109,7 @@ namespace crp
 	}
 
 	void StateManager::removeActiveState(){
+		std::cout << "Begin StateManager::removeActiveState()"<< std::endl;
 		if( not stateStack.empty() ){
 			GameState * state = stateStack.back();
 
